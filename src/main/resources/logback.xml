@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %cyan(%d) %highlight([%-5.5level]) %gray([%-10.10thread]) %magenta([%-25.25logger{0}]) %magenta([%-5.5line]) : %msg%n%n
+            </Pattern>
+        </layout>
+    </appender>
+    <logger name="pool.service.api.bo" level="info" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

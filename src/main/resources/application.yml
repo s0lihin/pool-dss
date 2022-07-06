@@ -1,0 +1,112 @@
+spring:
+  profiles:
+    #active: dev-aji
+    active: dev-julian
+
+# please active on profiles (dev-aji)
+# for dev
+---
+spring:
+  config:
+    activate:
+      on-profile: dev-aji
+  codec:
+    max-in-memory-size: 100MB
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/dbpool?retryWrites=true&w=majority
+  r2dbc:
+    pool:
+      max-idle-time: 30m
+      max-size: 40
+      initial-size: 20
+    password: pguser
+    username: postgres
+    url: r2dbc:postgresql://10.22.120.252:5432/toggle?schema=master
+  main:
+    allow-bean-definition-overriding: true
+  kafka:
+    bootstrap-servers: 10.22.120.232:9092,10.22.120.231:9092,10.22.120.230:9092
+    client-code: pool-api-bo
+    producer:
+      bootstrap-servers: 10.22.120.232:9092,10.22.120.231:9092,10.22.120.230:9092
+      client-id: pool-dss-bo-producer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      properties:
+        spring.json.add.type.headers: true
+    consumer:
+      bootstrap-servers: 10.22.120.232:9092,10.22.120.231:9092,10.22.120.230:9092
+      client-id: pool-dss-bo-consumer
+      group-id: pool-dss-bo
+      auto-offset-reset: latest
+      api-dss-topic: api-dss
+springbootwebfluxjjwt:
+  password.encoder.secret: mysecret
+  password.encoder.iteration: 33
+  password.encoder.keylength: 256
+  jjwt.secret: mysecretcobacobasekiranyakurangpanjanggwpanjanginsekaliancobadehhaha9292
+  jjwt.expiration: 36000000
+server:
+  port: 8081
+cron:
+  expression: 0 * * * * *
+logging:
+  level:
+    org.springframework: TRACE
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: DEBUG
+
+# please active on profiles (dev-julian)
+# for dev
+---
+spring:
+  config:
+    activate:
+      on-profile: dev-julian
+  codec:
+    max-in-memory-size: 100MB
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/dbpool?retryWrites=true&w=majority
+  r2dbc:
+    pool:
+      max-idle-time: 30m
+      max-size: 40
+      initial-size: 20
+    password: pguser
+    username: postgres
+    url: r2dbc:postgresql://10.22.120.252:5432/toggle?schema=master
+  main:
+    allow-bean-definition-overriding: true
+  kafka:
+    bootstrap-servers: 10.22.120.232:9092,10.22.120.231:9092,10.22.120.230:9092
+    client-code: pool-api-bo
+    producer:
+      bootstrap-servers: 10.22.120.232:9092,10.22.120.231:9092,10.22.120.230:9092
+      client-id: pool-dss-bo-producer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      properties:
+        spring.json.add.type.headers: true
+    consumer:
+      bootstrap-servers: 10.22.120.232:9092,10.22.120.231:9092,10.22.120.230:9092
+      client-id: pool-dss-bo-consumer
+      group-id: pool-dss-bo
+      auto-offset-reset: latest
+      api-dss-topic: api-dss
+springbootwebfluxjjwt:
+  password.encoder.secret: mysecret
+  password.encoder.iteration: 33
+  password.encoder.keylength: 256
+  jjwt.secret: mysecretcobacobasekiranyakurangpanjanggwpanjanginsekaliancobadehhaha9292
+  jjwt.expiration: 36000000
+server:
+  port: 8081
+cron:
+  expression: 0 * * * * *
+logging:
+  level:
+    org.springframework: TRACE
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: DEBUG
